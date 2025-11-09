@@ -28,23 +28,23 @@
   ],
   "動詞": [
     {
-      "name": "要",
-      "text": "要",
+      "name": "要出去",
+      "text": "要出去",
       "image": "https://cdn-icons-png.flaticon.com/512/992/992651.png"
     },
     {
-      "name": "去",
-      "text": "去",
+      "name": "要去",
+      "text": "要去",
       "image": "https://cdn-icons-png.flaticon.com/512/992/992700.png"
     },
     {
-      "name": "吃",
-      "text": "吃",
+      "name": "要吃",
+      "text": "要吃",
       "image": "https://cdn-icons-png.flaticon.com/512/562/562678.png"
     },
     {
-      "name": "上",
-      "text": "上",
+      "name": "要上",
+      "text": "要上",
       "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
     }
   ],
@@ -68,6 +68,11 @@
       "name": "外面玩",
       "text": "出去玩",
       "image": "https://cdn-icons-png.flaticon.com/512/883/883407.png"
+    },
+    {
+      "name": "牛奶",
+      "text": "牛奶  ",
+      "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png"
     }
   ]
 }
