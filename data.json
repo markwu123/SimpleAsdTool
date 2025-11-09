@@ -1,0 +1,62 @@
+{
+  "人稱": [
+    {
+      "name": "我",
+      "text": "我",
+      "value": "i",
+      "image": "https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
+    },
+    {
+      "name": "你",
+      "text": "你",
+      "value": "you",
+      "image": "https://cdn-icons-png.flaticon.com/512/2922/2922513.png"
+    },
+    {
+      "name": "他",
+      "text": "他",
+      "value": "he",
+      "image": "https://cdn-icons-png.flaticon.com/512/2922/2922516.png"
+    }
+  ],
+  "動詞": [
+    {
+      "name": "吃",
+      "text": "吃",
+      "value": "eat",
+      "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png"
+    },
+    {
+      "name": "喝",
+      "text": "喝",
+      "value": "drink",
+      "image": "https://cdn-icons-png.flaticon.com/512/1046/1046873.png"
+    },
+    {
+      "name": "走",
+      "text": "走",
+      "value": "walk",
+      "image": "https://cdn-icons-png.flaticon.com/512/3081/3081391.png"
+    }
+  ],
+  "名詞": [
+    {
+      "name": "蘋果",
+      "text": "蘋果",
+      "value": "apple",
+      "image": "https://cdn-icons-png.flaticon.com/512/415/415733.png"
+    },
+    {
+      "name": "水",
+      "text": "水",
+      "value": "water",
+      "image": "https://cdn-icons-png.flaticon.com/512/727/727790.png"
+    },
+    {
+      "name": "球",
+      "text": "球",
+      "value": "ball",
+      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135723.png"
+    }
+  ]
+}
