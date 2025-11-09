@@ -1,7 +1,8 @@
 {
   "name": "ASD 溝通工具",
   "short_name": "ASD工具",
-  "start_url": ".",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
