@@ -1,92 +1,103 @@
 body {
   font-family: "Noto Sans TC", sans-serif;
-  background: #f7f9fc;
+  background: #f3f4f6;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .container {
-  width: 100%;
-  max-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  box-sizing: border-box;
 }
 
 h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .option-bar {
-  text-align: center;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
-.button-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 10px;
-  margin-bottom: 80px; /* 預留底部空間給 footer */
+.sentence-box {
+  min-height: 40px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.word-button {
+.section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  background: #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 22px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.speak-button {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #4a90e2;
-  color: white;
-  font-size: 18px;
-  padding: 15px;
-  border: none;
-  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s, box-shadow 0.2s;
 }
 
-.word-button:hover {
-  background-color: #357abd;
-  transform: translateY(-2px);
+.speak-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.word-button img {
+.speak-button img {
   width: 50px;
   height: 50px;
-  object-fit: contain;
   margin-bottom: 8px;
 }
 
+.label {
+  font-size: 18px;
+}
+
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  border-top: 1px solid #ccc;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 15px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .footer button {
-  flex: 0 0 40%;
-  background-color: #ff9800;
-  font-weight: bold;
+  padding: 10px 20px;
   font-size: 18px;
-  border-radius: 10px;
-  padding: 15px;
-  color: white;
   border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: white;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s;
 }
 
 .footer button:hover {
-  background-color: #e68900;
+  background-color: #1e40af;
 }
