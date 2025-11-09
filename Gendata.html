@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文字轉 JSON 產生器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>文字轉 data.json 產生器</h1>
+
+  <div class="input-section">
+    <label>人稱：</label>
+    <textarea id="person" placeholder="例如：我,爸爸,媽媽,阿公,阿嬤"></textarea>
+  </div>
+
+  <div class="input-section">
+    <label>動詞：</label>
+    <textarea id="verb" placeholder="例如：要吃,要去,要上,要睡覺"></textarea>
+  </div>
+
+  <div class="input-section">
+    <label>名詞：</label>
+    <textarea id="noun" placeholder="例如：飯,廁所,牛奶,廚房"></textarea>
+  </div>
+
+  <button id="generate-btn">產生 JSON 並下載</button>
+
+  <script src="gendata.js"></script>
+</body>
+</html>
