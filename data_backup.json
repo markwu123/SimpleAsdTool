@@ -1,0 +1,78 @@
+{
+  "人稱": [
+    {
+      "name": "我",
+      "text": "我",
+      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+    },
+    {
+      "name": "爸爸",
+      "text": "爸爸",
+      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333602.png"
+    },
+    {
+      "name": "媽媽",
+      "text": "媽媽",
+      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333601.png"
+    },
+    {
+      "name": "阿公",
+      "text": "阿公",
+      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333596.png"
+    },
+    {
+      "name": "阿嬤",
+      "text": "阿嬤",
+      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333599.png"
+    }
+  ],
+  "動詞": [
+    {
+      "name": "要出去",
+      "text": "要出去",
+      "image": "https://cdn-icons-png.flaticon.com/512/992/992651.png"
+    },
+    {
+      "name": "要去",
+      "text": "要去",
+      "image": "https://cdn-icons-png.flaticon.com/512/992/992700.png"
+    },
+    {
+      "name": "要吃",
+      "text": "要吃",
+      "image": "https://cdn-icons-png.flaticon.com/512/562/562678.png"
+    },
+    {
+      "name": "要上",
+      "text": "要上",
+      "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
+    }
+  ],
+  "名詞": [
+    {
+      "name": "橘子",
+      "text": "橘子",
+      "image": "https://cdn-icons-png.flaticon.com/512/415/415733.png"
+    },
+    {
+      "name": "廁所",
+      "text": "廁所",
+      "image": "https://cdn-icons-png.flaticon.com/512/194/194483.png"
+    },
+    {
+      "name": "廚房",
+      "text": "廚房",
+      "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png"
+    },
+    {
+      "name": "外面玩",
+      "text": "出去玩",
+      "image": "https://cdn-icons-png.flaticon.com/512/883/883407.png"
+    },
+    {
+      "name": "牛奶",
+      "text": "牛奶  ",
+      "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png"
+    }
+  ]
+}
