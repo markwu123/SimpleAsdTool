@@ -1,115 +1,66 @@
 body {
-  font-family: "Microsoft JhengHei", sans-serif;
-  background-color: #f5f6fa;
+  font-family: "Noto Sans TC", sans-serif;
+  background-color: #f6f8fa;
+  text-align: center;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
 }
 
 .container {
-  width: 95%;
-  max-width: 1000px;
-  margin-top: 20px;
-  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 h1 {
   color: #333;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
 }
 
-.sentence-box {
-  min-height: 60px;
-  background-color: #fff;
-  border-radius: 12px;
-  border: 2px solid #ccc;
-  padding: 12px;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  word-wrap: break-word;
-}
-
-.controls {
-  margin-bottom: 25px;
-}
-
-.controls button {
-  font-size: 1.2rem;
-  padding: 14px 24px;
-  margin: 5px;
-  border: none;
-  border-radius: 10px;
-  background-color: #4a90e2;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.controls button:hover {
-  background-color: #357ab8;
-}
-
-.sections {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.section {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.section h2 {
-  text-align: left;
-  margin-bottom: 12px;
-  color: #444;
-  font-size: 1.4rem;
+.option-bar {
+  margin: 10px 0 20px;
+  font-size: 18px;
 }
 
 .button-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.speak-button {
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 12px;
+}
+
+button {
   width: 150px;
   height: 150px;
+  font-size: 20px;
   border: none;
-  border-radius: 18px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
   cursor: pointer;
-  font-size: 1.3rem;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-  user-select: none;
-  touch-action: manipulation;
 }
 
-.speak-button:hover {
-  background-color: #f0f4ff;
+button:hover {
   transform: scale(1.05);
+  background-color: #f0f0f0;
 }
 
-.speak-button img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 10px;
-  object-fit: contain;
-}
-
-.label {
-  color: #333;
-  font-weight: 600;
-  font-size: 1.3rem;
-}
+button img {
+  width: 64px;
+  height: 64px;
+  display
