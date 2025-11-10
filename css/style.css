@@ -31,15 +31,28 @@ h1 {
   font-size: 20px;
 }
 
+/* === 群組區塊 === */
 .section {
   margin-bottom: 30px;
 }
 
-h2 {
+/* 群組標題 + checkbox */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #e5e7eb;
-  padding: 10px;
   border-radius: 8px;
+  padding: 10px;
   font-size: 22px;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.section-title input[type="checkbox"] {
+  transform: scale(1.3);
+  accent-color: #4CAF50;
+  cursor: pointer;
 }
 
 .button-group {
