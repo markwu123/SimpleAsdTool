@@ -1,28 +1,33 @@
 let sentence = [];
 
+// 更新句子顯示區
 function updateSentenceBox() {
   const box = document.getElementById('sentence-box');
   if (box) box.textContent = sentence.join(' ');
 }
 
+// 語音播放
 function speak(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'zh-TW';
   utterance.rate = 1;
   speechSynthesis.speak(utterance);
 }
-// 播放音訊或語音
+
+// 播放音訊或語音（根據 audio 是否存在）
 function playAudioOrTTS(audioPath, text) {
-  if (audioPath) {
+  if (audioPath && audioPath.trim() !== '') {
     const audio = new Audio(audioPath);
     audio.play().catch(() => {
-      console.warn("播放 MP3 失敗，改用語音合成");
-      speakText(text);
+      console.warn("🎧 播放 MP3 失敗，改用語音合成");
+      speak(text);
     });
   } else {
-    speakText(text);
+    speak(text);
   }
 }
+
+// 載入 JSON 並建立畫面
 async function loadSections() {
   try {
     const response = await fetch('data.json');
@@ -32,12 +37,12 @@ async function loadSections() {
     container.innerHTML = '';
 
     groups.forEach((group, idx) => {
-      // 建立區塊
+      // 建立群組容器
       const sectionDiv = document.createElement('div');
       sectionDiv.className = 'section';
       sectionDiv.dataset.group = group.group;
 
-      // 標題與 checkbox
+      // 群組標題 + checkbox
       const titleDiv = document.createElement('div');
       titleDiv.className = 'section-title';
       titleDiv.innerHTML = `
@@ -48,7 +53,7 @@ async function loadSections() {
       `;
       sectionDiv.appendChild(titleDiv);
 
-      // 按鈕群
+      // 群組按鈕
       const buttonGroup = document.createElement('div');
       buttonGroup.className = 'button-group';
       if (group.isshow !== 'Y') buttonGroup.style.display = 'none';
@@ -66,7 +71,7 @@ async function loadSections() {
             sentence.push(item.text);
             updateSentenceBox();
           } else {
-            speak(item.text);
+            playAudioOrTTS(item.audio, item.text);
           }
         });
         buttonGroup.appendChild(button);
@@ -76,7 +81,7 @@ async function loadSections() {
       container.appendChild(sectionDiv);
     });
 
-    // 綁定 group checkbox
+    // 綁定群組 checkbox 開關
     document.querySelectorAll('.group-toggle').forEach(cb => {
       cb.addEventListener('change', (e) => {
         const index = e.target.dataset.index;
@@ -85,7 +90,7 @@ async function loadSections() {
       });
     });
 
-    // 播放句子
+    // 播放整句
     document.getElementById('playButton').addEventListener('click', () => {
       if (sentence.length > 0) speak(sentence.join(''));
     });
@@ -97,15 +102,16 @@ async function loadSections() {
     });
 
   } catch (error) {
-    console.error('載入 JSON 失敗：', error);
+    console.error('❌ 載入 JSON 失敗：', error);
   }
 }
 
-// iOS / iPadOS 初始化語音授權
+// iOS 初始化語音授權
 window.addEventListener('click', () => {
   if (speechSynthesis.getVoices().length === 0) {
     speechSynthesis.speak(new SpeechSynthesisUtterance(''));
   }
 }, { once: true });
 
+// 初始化
 window.addEventListener('DOMContentLoaded', loadSections);
