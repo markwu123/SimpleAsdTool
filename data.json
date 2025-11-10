@@ -1,5 +1,7 @@
 {
-  "人稱": [
+  "group":人稱",
+  "isshow":"Y",
+  "data": [
     {
       "name": "我",
       "text": "我",
@@ -32,7 +34,9 @@
     }
   ],
   
-  "動詞": [
+  "group": "動詞",
+  "isshow":"Y",
+  "data": [
     {
       "name": "要去",
       "text": "要去",
@@ -55,7 +59,9 @@
       "image": "https://cdn-icons-png.flaticon.com/512/9047/9047082.png"
     }
   ],
-  "名詞": [
+   "group":"名詞",
+  "isshow":"Y",
+  "data": [
     {
       "name": "橘子",
       "text": "橘子",
