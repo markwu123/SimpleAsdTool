@@ -2,7 +2,7 @@
   "groups": [
     {
       "group": "人稱",
-      "isshow": "Y",
+      "isshow": "N",
       "data": [
         { "name": "我", "text": "我", "image": "https://cdn-icons-png.flaticon.com/512/163/163847.png","audio":"" },
         { "name": "爸爸", "text": "爸爸", "image": "https://cdn-icons-png.flaticon.com/512/3048/3048150.png" },
@@ -14,7 +14,7 @@
     },
     {
       "group": "動詞",
-      "isshow": "Y",
+      "isshow": "N",
       "data": [
         { "name": "要去", "text": "要去", "image": "https://cdn-icons-png.flaticon.com/512/15306/15306967.png" },
         { "name": "要拿", "text": "要拿", "image": "https://cdn-icons-png.flaticon.com/512/10688/10688534.png" },
@@ -24,13 +24,24 @@
     },
     {
       "group": "名詞",
-      "isshow": "Y",
+      "isshow": "N",
       "data": [
         { "name": "橘子", "text": "橘子", "image": "https://cdn-icons-png.flaticon.com/512/5029/5029540.png" },
         { "name": "廁所", "text": "廁所", "image": "https://cdn-icons-png.flaticon.com/512/194/194483.png" },
         { "name": "廚房", "text": "廚房", "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png" },
         { "name": "出去玩", "text": "出去玩", "image": "https://cdn-icons-png.flaticon.com/512/9252/9252578.png" },
         { "name": "牛奶", "text": "牛奶", "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png" }
+      ]
+    },
+    {
+      "group": "短句子",
+      "isshow": "Y",
+      "data": [
+        { "name": "吃橘子", "text": "吃橘子", "image": "https://cdn-icons-png.flaticon.com/512/5029/5029540.png" },
+        { "name": "上廁所", "text": "上廁所", "image": "https://cdn-icons-png.flaticon.com/512/194/194483.png" },
+        { "name": "去廚房", "text": "去廚房", "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png" },
+        { "name": "出去玩", "text": "出去玩", "image": "https://cdn-icons-png.flaticon.com/512/9252/9252578.png" },
+        { "name": "喝牛奶", "text": "喝牛奶", "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png" }
       ]
     }
   ]
