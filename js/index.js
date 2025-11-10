@@ -11,7 +11,18 @@ function speak(text) {
   utterance.rate = 1;
   speechSynthesis.speak(utterance);
 }
-
+// 播放音訊或語音
+function playAudioOrTTS(audioPath, text) {
+  if (audioPath) {
+    const audio = new Audio(audioPath);
+    audio.play().catch(() => {
+      console.warn("播放 MP3 失敗，改用語音合成");
+      speakText(text);
+    });
+  } else {
+    speakText(text);
+  }
+}
 async function loadSections() {
   try {
     const response = await fetch('data.json');
