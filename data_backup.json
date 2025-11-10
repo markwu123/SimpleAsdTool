@@ -24,6 +24,11 @@
       "name": "阿嬤",
       "text": "阿罵",
       "image": "https://cdn-icons-png.flaticon.com/512/3554/3554027.png"
+    },
+    {
+      "name": "弟弟",
+      "text": "弟弟",
+      "image": "https://cdn-icons-png.flaticon.com/512/7223/7223689.png" 
     }
   ],
   
@@ -50,23 +55,11 @@
       "image": "https://cdn-icons-png.flaticon.com/512/9047/9047082.png"
     }
   ],
-  "數量": [
-    {
-      "name": "1",
-      "text": "1",
-      "image": "https://cdn-icons-png.flaticon.com/512/10595/10595791.png"
-    },
-      {
-      "name": "2",
-      "text": "2",
-      "image": "https://cdn-icons-png.flaticon.com/512/10595/10595792.png"
-    }
-   ],
   "名詞": [
     {
       "name": "橘子",
       "text": "橘子",
-      "image": "https://cdn-icons-png.flaticon.com/512/415/415733.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/5029/5029540.png"
     },
     {
       "name": "廁所",
