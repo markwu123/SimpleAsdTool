@@ -3,34 +3,35 @@
     {
       "name": "我",
       "text": "我",
-      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/163/163847.png"
     },
     {
       "name": "爸爸",
       "text": "爸爸",
-      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333602.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/3048/3048150.png"
     },
     {
       "name": "媽媽",
       "text": "媽媽",
-      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333601.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/2829/2829835.png"
     },
     {
       "name": "阿公",
-      "text": "阿公",
-      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333596.png"
+      "text": "阿貢",
+      "image": "https://cdn-icons-png.flaticon.com/512/7703/7703936.png"
     },
     {
       "name": "阿嬤",
-      "text": "阿嬤",
-      "image": "https://cdn-icons-png.flaticon.com/512/4333/4333599.png"
+      "text": "阿罵",
+      "image": "https://cdn-icons-png.flaticon.com/512/3554/3554027.png"
     }
   ],
+  
   "動詞": [
     {
       "name": "要出去",
       "text": "要出去",
-      "image": "https://cdn-icons-png.flaticon.com/512/992/992651.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/15306/15306967.png"
     },
     {
       "name": "要去",
@@ -46,8 +47,24 @@
       "name": "要上",
       "text": "要上",
       "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
+    },
+    {
+      "name": "要喝",
+      "text": "要喝",
+      "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
     }
-  ],
+  ], "數量": [
+    {
+      "name": "1",
+      "text": "1",
+      "image": "https://cdn-icons-png.flaticon.com/512/10595/10595791.png"
+    },
+      {
+      "name": "2",
+      "text": "2",
+      "image": "https://cdn-icons-png.flaticon.com/512/10595/10595792.png"
+    }
+   ],
   "名詞": [
     {
       "name": "橘子",
@@ -65,9 +82,9 @@
       "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png"
     },
     {
-      "name": "外面玩",
+      "name": "出去玩",
       "text": "出去玩",
-      "image": "https://cdn-icons-png.flaticon.com/512/883/883407.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/9252/9252578.png"
     },
     {
       "name": "牛奶",
