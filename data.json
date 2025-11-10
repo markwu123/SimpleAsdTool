@@ -4,7 +4,7 @@
       "group": "人稱",
       "isshow": "Y",
       "data": [
-        { "name": "我", "text": "我", "image": "https://cdn-icons-png.flaticon.com/512/163/163847.png" },
+        { "name": "我", "text": "我", "image": "https://cdn-icons-png.flaticon.com/512/163/163847.png","audio":"" },
         { "name": "爸爸", "text": "爸爸", "image": "https://cdn-icons-png.flaticon.com/512/3048/3048150.png" },
         { "name": "媽媽", "text": "媽媽", "image": "https://cdn-icons-png.flaticon.com/512/2829/2829835.png" },
         { "name": "阿公", "text": "阿公", "image": "https://cdn-icons-png.flaticon.com/512/7703/7703936.png" },
