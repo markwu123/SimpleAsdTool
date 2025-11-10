@@ -7,5 +7,19 @@
 與整句／單字模式。
 
 使用方式：
+
 共通：使用瀏灠器開啟https://markwu123.github.io/SimpleAsdTool/
+
 也支援PWS APP 方法： safari/google chrome 時，按下分享-->加入主畫面即可
+
+另外歡迎自行下載放到自己網頁空間客制化自己的對話。
+
+只要自行修改data.json即可。
+
+更新日誌
+
+==============================
+
+2025/11/10 update icon
+2025/11/09 Create Project
+
