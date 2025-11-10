@@ -29,31 +29,28 @@
   
   "動詞": [
     {
-      "name": "要出去",
-      "text": "要出去",
+      "name": "要去",
+      "text": "要去",
       "image": "https://cdn-icons-png.flaticon.com/512/15306/15306967.png"
     },
     {
-      "name": "要去",
-      "text": "要去",
-      "image": "https://cdn-icons-png.flaticon.com/512/992/992700.png"
+      "name": "要拿",
+      "text": "要拿",
+      "image": "https://cdn-icons-png.flaticon.com/512/10688/10688534.png"
     },
     {
       "name": "要吃",
       "text": "要吃",
       "image": "https://cdn-icons-png.flaticon.com/512/562/562678.png"
     },
-    {
-      "name": "要上",
-      "text": "要上",
-      "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
-    },
+    
     {
       "name": "要喝",
       "text": "要喝",
-      "image": "https://cdn-icons-png.flaticon.com/512/992/992701.png"
+      "image": "https://cdn-icons-png.flaticon.com/512/9047/9047082.png"
     }
-  ], "數量": [
+  ],
+  "數量": [
     {
       "name": "1",
       "text": "1",
