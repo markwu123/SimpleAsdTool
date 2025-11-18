@@ -41,36 +41,44 @@ h1 {
   word-wrap: break-word;
 }
 
-/* 群組區塊 */
+/* 群組區塊（共通）*/
 .section {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px 0 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  padding: 0; /* header 與內容負責內距 */
+  border: 1px solid #e6e6e6;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: visible;
 }
 
-/* 群組標題 */
-.section-title {
-  background: #e5e7eb;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 20px;
-  text-align: left;
+/* header（標題列） */
+.section-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #eaeef2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
 }
 
-/* 按鈕群組 */
+/* header 裡的 checkbox 和標題間隔調整 */
+.section-header label { display:inline-flex; align-items:center; gap:8px; }
+
+/* 按鈕群組（預設隱藏區塊由 collapsed 控制）*/
 .button-group {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  padding: 10px 15px 0;
+  padding: 14px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 /* 單一按鈕 */
@@ -80,18 +88,23 @@ h1 {
   background: #fff;
   border: 2px solid #d1d5db;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.speak-button:focus {
+  outline: 3px solid rgba(37,99,235,0.18);
+  outline-offset: 2px;
 }
 
 .speak-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(16,24,40,0.08);
 }
 
 /* 圖片 */
@@ -99,12 +112,15 @@ h1 {
   width: 55px;
   height: 55px;
   margin-bottom: 6px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
 }
 
 /* 按鈕文字 */
 .label {
   font-size: 18px;
   font-weight: 500;
+  transition: transform 0.25s ease, font-size 0.25s ease;
 }
 
 /* 底部功能鍵 */
@@ -129,82 +145,71 @@ h1 {
 
 .footer button:hover {
   background-color: #1e40af;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* RWD 手機優化 */
 @media (max-width: 600px) {
-  .speak-button {
-    width: 95px;
-    height: 100px;
-  }
-  .speak-button img {
-    width: 45px;
-    height: 45px;
-  }
-  .label {
-    font-size: 16px;
-  }
-  .sentence-box {
-    font-size: 20px;
-  }
-  h1 {
-    font-size: 24px;
-  }
+  .speak-button { width: 95px; height: 100px; }
+  .speak-button img { width: 45px; height: 45px; }
+  .label { font-size: 16px; }
+  .sentence-box { font-size: 20px; }
+  h1 { font-size: 24px; }
 }
+
 /* === 工具列（未展開）=== */
 .section.collapsed {
-  height: 60px;          /* 縮很小像工具列 */
-  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 5px 10px;
-  transform: scale(1);   /* 不放大 */
+  height: 64px;
+  padding: 0 10px;
   cursor: pointer;
+  overflow: hidden;
 }
 
-/* 工具列的小圖示 */
-.section.collapsed .speak-button img {
-  width: 32px;
-  height: 32px;
-}
-
-/* 工具列的小文字 */
-.section.collapsed .label {
-  font-size: 12px;
-}
-
-/* 隱藏按鈕區（縮起時） */
+/* 預設把 button-group 隱藏（collapsed）*/
 .section.collapsed .button-group {
   display: none !important;
+  opacity: 0;
+  transform: translateY(-6px);
 }
+
+/* 缩小時 icon 與文字 */
+.section.collapsed .speak-button img { width: 32px; height: 32px; }
+.section.collapsed .label { font-size: 12px; }
 
 /* === 展開版 === */
 .section.expanded {
-  transform: scale(1);
-  width: 100%;
-  padding: 10px;
-  background: #fffdf5;
-  border: 2px solid #ffcc66;
-  border-radius: 8px;
-  z-index: 10;
+  z-index: 20;
+  border-color: #ffd28a;
+  box-shadow: 0 8px 30px rgba(16,24,40,0.12);
+}
+
+/* 展開時顯示按鈕群組 */
+.section.expanded .button-group {
+  display: flex !important;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 展開時 icon 放大 */
 .section.expanded .speak-button img {
   width: 90px;
   height: 90px;
+  transform: scale(1.08);
 }
 
 /* 展開時文字放大 */
 .section.expanded .label {
   font-size: 20px;
+  transform: scale(1.02);
 }
 
-/* 動畫過度 */
+/* 平滑動畫（只作用於 transform/opacity/box-shadow/border-color） */
 .section,
 .speak-button img,
-.speak-button .label {
-  transition: all 0.25s ease;
+.speak-button .label,
+.button-group {
+  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
