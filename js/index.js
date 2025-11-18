@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   function renderSections(data) {
+    console.log(data)
     data.forEach(section => {
       const sectionEl = document.createElement("div");
       sectionEl.className = "section";
