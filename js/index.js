@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderSections(data) {
     console.log(data)
-    data.forEach(section => {
+    data.groups.forEach(section => {
       const sectionEl = document.createElement("div");
       sectionEl.className = "section";
       sectionEl.dataset.key = section.key;
