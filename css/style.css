@@ -152,20 +152,27 @@ h1 {
     font-size: 24px;
   }
 }
-.section {
-  transition: transform 0.3s ease;
-  transform-origin: center center;
-}
-
+/* section 展開時放大 */
 .section.expanded {
-  transform: scale(1.5);
+  transform: scale(1.15);
+  z-index: 10;
 }
 
-.section .button-item img {
-  transition: transform 0.3s ease;
+/* 內部 icon 放大 */
+.section.expanded .speak-button img {
+  transform: scale(1.25);
 }
 
-.section.expanded .button-item img {
-  transform: scale(1.2);
+/* 內部文字也稍微放大 */
+.section.expanded .speak-button .label {
+  transform: scale(1.15);
 }
+
+/* 加上平滑動畫 */
+.section,
+.speak-button img,
+.speak-button .label {
+  transition: transform 0.25s ease;
+}
+
 
