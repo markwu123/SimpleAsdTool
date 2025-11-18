@@ -96,17 +96,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === 展開邏輯 ===
-  function toggleSection(section) {
+function toggleSection(section) {
     if (currentExpandedSection === section) {
-      section.classList.remove("expanded");
-      currentExpandedSection = null;
-      return;
+        section.classList.remove("expanded");
+        section.classList.add("collapsed");
+        currentExpandedSection = null;
+        return;
     }
 
-    collapseAll();
+    // 收起全部
+    document.querySelectorAll(".section").forEach(sec => {
+        sec.classList.remove("expanded");
+        if (isSectionVisible(sec)) sec.classList.add("collapsed");
+    });
+
+    // 展開當前
+    section.classList.remove("collapsed");
     section.classList.add("expanded");
+
     currentExpandedSection = section;
-  }
+}
 
   function collapseAll() {
     document.querySelectorAll(".section").forEach(sec => {
