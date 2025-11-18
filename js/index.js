@@ -92,34 +92,49 @@ function handleSpeak(item) {
 }
 
   // 語音播放
+// 🔊 語音播放
 function speak(text, langCode) {
   const u = new SpeechSynthesisUtterance(text);
 
-  // 語系對照表
+  // 🔤 語系對照表（可自行再擴充）
   const LANG_MAP = {
-    "zh": "zh-TW",
-    "nan": "nan-TW",
-    "hak": "hak-TW",
-    "pwn": "pwn-TW",
-    "en":'en'
+    "zh": "zh-TW",    // 中文
+    "nan": "nan-TW",  // 台語
+    "hak": "hak-TW",  // 客語
+    "pwn": "pwn-TW",  // 排灣語（原住民語示例）
+    "ami": "ami-TW",  // 阿美語
+    "bnn": "bnn-TW",  // 布農語
+    "tay": "tay-TW",  // 泰雅語
+    "tsu": "tsu-TW",  // 鄒族語
+    "en": "en-US"     // 英文
   };
 
-  // 預設中文
+  // 預設使用中文
   let targetLang = LANG_MAP[langCode] || "zh-TW";
 
-  // 檢查裝置支援語音
-  const voices = speechSynthesis.getVoices();
-  const hasVoice = voices.some(v => v.lang === targetLang);
+  // 📌 某些瀏覽器首次 getVoices() 會為空 → workaround
+  const loadVoices = () => {
+    const voices = speechSynthesis.getVoices();
+    const hasVoice = voices.some(v => v.lang === targetLang);
 
-  // 若語音不支援 → fallback 中文
-  if (!hasVoice && targetLang !== "zh-TW") {
-    console.warn(`⚠️ 語音 ${targetLang} 不支援，改用 zh-TW`);
-    targetLang = "zh-TW";
+    // 若該語言沒有支援 → fallback 中文
+    if (!hasVoice && targetLang !== "zh-TW") {
+      console.warn(`⚠️語音 ${targetLang} 不支援，改用 zh-TW`);
+      targetLang = "zh-TW";
+    }
+
+    u.lang = targetLang;
+    speechSynthesis.speak(u);
+  };
+
+  // 若 voices 還沒載入 → 等它載入後再執行
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  } else {
+    loadVoices();
   }
-
-  u.lang = targetLang;
-  speechSynthesis.speak(u);
 }
+
 
 
 
