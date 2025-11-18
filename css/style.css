@@ -165,7 +165,10 @@ h1 {
 .footer button:active {
   transform: scale(0.95);
 }
-
+.section.expanded .speak-button img,
+.section.expanded .label {
+    display: block !important;
+}
 /* ======= 版權 ======= */
 .credits {
   margin-top: 20px;
