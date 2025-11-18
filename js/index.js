@@ -12,17 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("data.json")
     .then(res => res.json())
     .then(data => {
-      renderSections(data);
+      // data = { groups: [...] }  ← 你的 JSON
+      renderSections(data.groups);
     });
 
-  function renderSections(data) {
-
-    data.groups.forEach(section => {
+  function renderSections(groups) {
+    groups.forEach(section => {
       const sectionEl = document.createElement("div");
       sectionEl.className = "section";
-      sectionEl.dataset.key = section.key;
 
-      // 標題列（含「顯示」checkbox）
+      // 標題列（含 checkbox）
       const title = document.createElement("div");
       title.className = "section-title";
 
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       chk.className = "toggle-section";
 
       const ttl = document.createElement("span");
-      ttl.textContent = section.title;
+      ttl.textContent = section.group;
 
       title.appendChild(chk);
       title.appendChild(ttl);
@@ -42,59 +41,61 @@ document.addEventListener("DOMContentLoaded", () => {
       const group = document.createElement("div");
       group.className = "button-group";
 
-      section.items.forEach(item => {
+      // ★ 修正 item 欄位對應：name/text/image → label/icon
+      section.data.forEach(item => {
         const btn = document.createElement("div");
         btn.className = "speak-button";
 
         btn.innerHTML = `
-          <img src="${item.icon}" />
-          <div class="label">${item.label}</div>
+          <img src="${item.image}" />
+          <div class="label">${item.text}</div>
         `;
 
-        btn.addEventListener("click", () => handleSpeak(item));
+        // 點擊 → 說話 或 加入句子
+        btn.addEventListener("click", () => handleSpeak(item.text));
         group.appendChild(btn);
       });
 
       sectionEl.appendChild(group);
       buttonContainer.appendChild(sectionEl);
 
-      // 顯示/隱藏語詞按鈕
+      // "顯示" checkbox
       chk.addEventListener("change", () => {
         updateSectionVisibility(sectionEl);
         if (expandMode.checked) collapseAll();
       });
 
-      // 點擊 section → 展開/收回（僅展開模式時）
+      // Section 點擊 → 展開/收合（只有展開模式）
       sectionEl.addEventListener("click", e => {
-        if (!expandMode.checked) return;              // 展開模式 OFF
-        if (!chk.checked) return;                    // isshow 未勾 → 不可展開
-        if (e.target.tagName === "INPUT") return;    // 避免點到 checkbox 觸發展開
+        if (!expandMode.checked) return;
+        if (!chk.checked) return;
+        if (e.target.tagName === "INPUT") return;
 
         toggleSection(sectionEl);
       });
 
-      // 初始依據 isshow
+      // 初始顯示模式
       updateSectionVisibility(sectionEl);
     });
   }
 
-  // 處理朗讀 / 加入句子
-  function handleSpeak(item) {
+  // 加入句子 or 說話
+  function handleSpeak(text) {
     if (sentenceMode.checked) {
-      sentenceBox.textContent += item.label + " ";
+      sentenceBox.textContent += text + " ";
     } else {
-      speak(item.label);
+      speak(text);
     }
   }
 
-  // 播放文字語音
+  // 語音播放
   function speak(text) {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "zh-TW";
     speechSynthesis.speak(u);
   }
 
-  // === 展開/收合邏輯 ===
+  // === 展開邏輯 ===
   function toggleSection(section) {
     if (currentExpandedSection === section) {
       section.classList.remove("expanded");
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return section.querySelector(".toggle-section").checked;
   }
 
-  // 控制 isshow（語詞是否顯示）
+  // 顯示/隱藏 section
   function updateSectionVisibility(section) {
     const checked = section.querySelector(".toggle-section").checked;
 
@@ -130,23 +131,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!expandMode.checked) {
-      // 展開模式 OFF → 全部正常顯示（不縮）
       section.classList.remove("collapsed");
       section.classList.remove("expanded");
     }
   }
 
-  // === 展開模式切換 ===
+  // 展開模式切換
   expandMode.addEventListener("change", () => {
     if (!expandMode.checked) {
-      // 關閉展開模式 → 全恢復正常大小
       document.querySelectorAll(".section").forEach(sec => {
         sec.classList.remove("collapsed");
         sec.classList.remove("expanded");
       });
       currentExpandedSection = null;
     } else {
-      // 開啟展開模式 → 所有 isshow=Y 的 section 都先縮起來
       collapseAll();
     }
   });
