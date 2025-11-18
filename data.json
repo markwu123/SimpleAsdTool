@@ -41,7 +41,9 @@
         { "name": "上廁所", "text": "上廁所", "image": "https://cdn-icons-png.flaticon.com/512/194/194483.png" },
         { "name": "去廚房", "text": "去廚房", "image": "https://cdn-icons-png.flaticon.com/512/1046/1046857.png" },
         { "name": "出去玩", "text": "出去玩", "image": "https://cdn-icons-png.flaticon.com/512/9252/9252578.png" },
-        { "name": "喝牛奶", "text": "喝牛奶", "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png" }
+        { "name": "喝牛奶", "text": "喝牛奶", "image": "https://cdn-icons-png.flaticon.com/512/1485/1485868.png" },
+        { "name": "吃餅乾", "text": "吃餅乾", "image": "https://cdn-icons-png.flaticon.com/512/16848/16848593.png" },
+        { "name": "開門", "text": "開門", "image": "https://cdn-icons-png.flaticon.com/512/3002/3002727.png" },
       ]
     }
   ]
