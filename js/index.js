@@ -95,22 +95,32 @@ function handleSpeak(item) {
 function speak(text, lang) {
   const u = new SpeechSynthesisUtterance(text);
 
-  // 依據 data.json 的欄位切換語言
-  if(lang ==undefine)
-  {
+  // 預設中文
+  let targetLang = "zh-TW";
 
-     u.lang = "zh-TW";   // 中文
+  // 若 data.json 有 lang 欄位
+  if (lang !== undefined) {
+    if (lang === "nan") {
+      targetLang = "nan-TW"; // 嘗試台語
+    } else {
+      targetLang = "zh-TW";
+    }
   }
-  else
-  {
-  if (lang === "nan") {
-    u.lang = "nan-TW";  // 台語
-  } else {
-    u.lang = "zh-TW";   // 中文
+
+  // 檢查裝置是否支援該語言
+  const voices = speechSynthesis.getVoices();
+  const hasVoice = voices.some(v => v.lang === targetLang);
+
+  // 不支援台語 → fallback 中文
+  if (!hasVoice && targetLang === "nan-TW") {
+    console.warn("⚠️ 台語語音不支援，改用中文播放");
+    targetLang = "zh-TW";
   }
-  }
+
+  u.lang = targetLang;
   speechSynthesis.speak(u);
 }
+
 
   // === 展開邏輯 ===
 function toggleSection(section) {
