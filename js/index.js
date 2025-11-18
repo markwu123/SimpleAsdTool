@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 點擊 → 說話 或 加入句子
         btn.addEventListener("click", (e) => {
-  e.stopPropagation(); // 防止點擊圖示導致 section 被收回
-  handleSpeak(item.text);
-});
+        e.stopPropagation(); // 防止點擊圖示導致 section 被收回
+        handleSpeak(item);
+      });
         group.appendChild(btn);
       });
 
@@ -83,20 +83,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 加入句子 or 說話
-  function handleSpeak(text) {
-    if (sentenceMode.checked) {
-      sentenceBox.textContent += text + " ";
-    } else {
-      speak(text);
-    }
+function handleSpeak(item) {
+  if (sentenceMode.checked) {
+    sentenceBox.textContent += item.text + " ";
+  } else {
+    speak(item.text, item.lang);
   }
+}
 
   // 語音播放
-  function speak(text) {
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "zh-TW";
-    speechSynthesis.speak(u);
+function speak(text, lang) {
+  const u = new SpeechSynthesisUtterance(text);
+
+  // 依據 data.json 的欄位切換語言
+  if(lang ==undefine)
+  {
+
+     u.lang = "zh-TW";   // 中文
   }
+  else
+  {
+  if (lang === "nan") {
+    u.lang = "nan-TW";  // 台語
+  } else {
+    u.lang = "zh-TW";   // 中文
+  }
+  }
+  speechSynthesis.speak(u);
+}
 
   // === 展開邏輯 ===
 function toggleSection(section) {
