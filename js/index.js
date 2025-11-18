@@ -34,10 +34,20 @@ function enableSectionZoom() {
   sections.forEach(sec => {
     sec.addEventListener('click', function (e) {
 
-      // 避免按到按鈕時觸發 Zoom（speak-button 才是正確 class）
+      // 避免點到按鈕時啟動縮放
       if (e.target.closest(".speak-button")) return;
 
-      sec.classList.toggle('expanded');
+      // 若已經是展開狀態 → 點擊時縮回
+      if (sec.classList.contains('expanded')) {
+        sec.classList.remove('expanded');
+        return;
+      }
+
+      // 收起所有 section
+      sections.forEach(s => s.classList.remove('expanded'));
+
+      // 展開目前這個
+      sec.classList.add('expanded');
     });
   });
 }
