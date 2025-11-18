@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 點擊 → 說話 或 加入句子
         btn.addEventListener("click", (e) => {
   e.stopPropagation(); // 防止點擊圖示導致 section 被收回
-  handleSpeak(item);
+  handleSpeak(item.text);
 });
         group.appendChild(btn);
       });
