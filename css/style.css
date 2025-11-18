@@ -1,215 +1,174 @@
-/* 基本樣式 */
+/* ======= 基本佈局 ======= */
 body {
-  font-family: "Noto Sans TC", sans-serif;
-  background: #f3f4f6;
+  font-family: "Arial", sans-serif;
+  background: #f5f5f5;
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #111827;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: auto;
   padding: 20px;
 }
 
-/* 標題 */
 h1 {
   margin-bottom: 15px;
-  font-size: 28px;
-  color: #1f2937;
 }
 
-/* 句子模式開關 */
+/* ======= 選項列 ======= */
 .option-bar {
+  margin-bottom: 10px;
+}
+
+.extra-options {
   margin-bottom: 15px;
-  font-size: 18px;
 }
 
-/* 句子顯示區 */
+.extra-options label {
+  margin: 0 8px;
+}
+
+/* ======= 句子區 ======= */
 .sentence-box {
-  min-height: 50px;
-  border: 2px dashed #9ca3af;
-  border-radius: 10px;
-  padding: 12px;
+  min-height: 40px;
   background: #fff;
-  margin-bottom: 25px;
-  font-size: 22px;
-  line-height: 1.5;
-  color: #111;
-  word-wrap: break-word;
-}
-
-/* 群組區塊（共通）*/
-.section {
-  margin-bottom: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-  padding: 0; /* header 與內容負責內距 */
-  border: 1px solid #e6e6e6;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
-  position: relative;
-  overflow: visible;
-}
-
-/* header（標題列） */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  background: #eaeef2;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  font-size: 18px;
-  font-weight: 600;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
   text-align: left;
 }
 
-/* header 裡的 checkbox 和標題間隔調整 */
-.section-header label { display:inline-flex; align-items:center; gap:8px; }
-
-/* 按鈕群組（預設隱藏區塊由 collapsed 控制）*/
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 14px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-/* 單一按鈕 */
-.speak-button {
-  width: 110px;
-  height: 120px;
-  background: #fff;
-  border: 2px solid #d1d5db;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+/* ======= Section 容器 ======= */
+.button-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  gap: 12px;
 }
 
-.speak-button:focus {
-  outline: 3px solid rgba(37,99,235,0.18);
-  outline-offset: 2px;
-}
-
-.speak-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 14px rgba(16,24,40,0.08);
-}
-
-/* 圖片 */
-.speak-button img {
-  width: 55px;
-  height: 55px;
-  margin-bottom: 6px;
-  object-fit: contain;
-  transition: transform 0.25s ease;
-}
-
-/* 按鈕文字 */
-.label {
-  font-size: 18px;
-  font-weight: 500;
-  transition: transform 0.25s ease, font-size 0.25s ease;
-}
-
-/* 底部功能鍵 */
-.footer {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  background-color: #2563eb;
-  color: white;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.footer button:hover {
-  background-color: #1e40af;
-  transform: scale(1.02);
-}
-
-/* RWD 手機優化 */
-@media (max-width: 600px) {
-  .speak-button { width: 95px; height: 100px; }
-  .speak-button img { width: 45px; height: 45px; }
-  .label { font-size: 16px; }
-  .sentence-box { font-size: 20px; }
-  h1 { font-size: 24px; }
-}
-
-/* === 工具列（未展開）=== */
-.section.collapsed {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 64px;
-  padding: 0 10px;
-  cursor: pointer;
+/* ======= Section 外觀 ======= */
+.section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  transition: all 0.25s ease-in-out;
   overflow: hidden;
 }
 
-/* 預設把 button-group 隱藏（collapsed）*/
-.section.collapsed .button-group {
-  display: none !important;
-  opacity: 0;
-  transform: translateY(-6px);
+/* 標題列 */
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
-/* 缩小時 icon 與文字 */
-.section.collapsed .speak-button img { width: 32px; height: 32px; }
-.section.collapsed .label { font-size: 12px; }
-
-/* === 展開版 === */
-.section.expanded {
-  z-index: 20;
-  border-color: #ffd28a;
-  box-shadow: 0 8px 30px rgba(16,24,40,0.12);
+/* 語詞按鈕區 */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
 }
 
-/* 展開時顯示按鈕群組 */
-.section.expanded .button-group {
-  display: flex !important;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 展開時 icon 放大 */
-.section.expanded .speak-button img {
+/* ======= 按鈕樣式 ======= */
+.speak-button {
   width: 90px;
-  height: 90px;
-  transform: scale(1.08);
+  padding: 8px;
+  background: #fff;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
 }
 
-/* 展開時文字放大 */
+.speak-button img {
+  width: 70px;
+  height: 70px;
+}
+
+.speak-button .label {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 點擊回饋 */
+.speak-button:active {
+  transform: scale(0.9);
+}
+
+/* ======= isshow = N：語詞隱藏 ======= */
+.hidden-section .button-group {
+  display: none;
+}
+
+/* ======= 展開模式行為 ======= */
+
+/* 展開 → 放到最大、字變大、圖片變大 */
+.section.expanded {
+  transform: scale(1.05);
+  border-color: #4caf50;
+  box-shadow: 0 0 10px #4caf5066;
+}
+
+.section.expanded .speak-button {
+  width: 120px;
+}
+
+.section.expanded img {
+  width: 100px;
+  height: 100px;
+}
+
 .section.expanded .label {
   font-size: 20px;
-  transform: scale(1.02);
 }
 
-/* 平滑動畫（只作用於 transform/opacity/box-shadow/border-color） */
-.section,
-.speak-button img,
-.speak-button .label,
-.button-group {
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+/* 其他縮成工具列 */
+.section.collapsed {
+  height: 55px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.section.collapsed .button-group {
+  display: none;
+}
+
+/* ======= 按鈕列 ======= */
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer button {
+  padding: 10px 16px;
+  font-size: 18px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.footer button:active {
+  transform: scale(0.95);
+}
+
+/* ======= 版權 ======= */
+.credits {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #777;
 }
