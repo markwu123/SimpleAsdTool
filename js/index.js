@@ -27,8 +27,33 @@ function playAudioOrTTS(audioPath, text) {
   }
 }
 
-// 放大縮小區塊
 function enableSectionZoom() {
+  const sections = document.querySelectorAll('.section');
+
+  sections.forEach(sec => {
+    sec.addEventListener('click', function () {
+      // 如果已經展開 → 收回
+      if (sec.classList.contains('expanded')) {
+        sec.classList.remove('expanded');
+        sec.classList.add('collapsed');
+        return;
+      }
+
+      // 收合其他 section
+      sections.forEach(s => {
+        s.classList.remove('expanded');
+        s.classList.add('collapsed');
+      });
+
+      // 展開目前這個
+      sec.classList.remove('collapsed');
+      sec.classList.add('expanded');
+    });
+  });
+}
+
+// 放大縮小區塊
+function oldenableSectionZoom() {
   const sections = document.querySelectorAll('.section');
 
   sections.forEach(sec => {
