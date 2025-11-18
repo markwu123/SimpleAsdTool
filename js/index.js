@@ -1,170 +1,142 @@
 let sentence = [];
 
-// 更新句子顯示區
+// 更新句子框
 function updateSentenceBox() {
   const box = document.getElementById('sentence-box');
   if (box) box.textContent = sentence.join(' ');
 }
 
-// 語音播放
+// 語音
 function speak(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-TW';
-  utterance.rate = 1;
-  speechSynthesis.speak(utterance);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-TW';
+  speechSynthesis.speak(u);
 }
 
-// 播放音訊或語音（根據 audio 是否存在）
+// 播放音檔或語音
 function playAudioOrTTS(audioPath, text) {
-  if (audioPath && audioPath.trim() !== '') {
+  if (audioPath && audioPath.trim() !== "") {
     const audio = new Audio(audioPath);
-    audio.play().catch(() => {
-      console.warn("🎧 播放 MP3 失敗，改用語音合成");
-      speak(text);
-    });
+    audio.play().catch(() => speak(text));
   } else {
     speak(text);
   }
 }
 
-function enableSectionZoom() {
+// 載入資料
+async function loadSections() {
+  const response = await fetch('data.json');
+  const json = await response.json();
+  const groups = json.groups;
+
+  const container = document.getElementById('buttonContainer');
+  container.innerHTML = '';
+
+  groups.forEach((group, idx) => {
+    const sec = document.createElement('div');
+    sec.className = 'section collapsed';
+
+    // ✨ 新增：checkbox
+    const titleRow = document.createElement('div');
+    titleRow.className = 'section-header';
+    titleRow.innerHTML = `
+      <label>
+        <input type="checkbox" class="section-check" data-index="${idx}">
+        ${group.group}
+      </label>
+    `;
+    sec.appendChild(titleRow);
+
+    const buttonGroup = document.createElement('div');
+    buttonGroup.className = 'button-group';
+
+    group.data.forEach(item => {
+      const btn = document.createElement('div');
+      btn.className = 'speak-button';
+      btn.innerHTML = `
+        <img src="${item.image}" />
+        <div class="label">${item.name}</div>
+      `;
+      btn.addEventListener('click', () => {
+        const enableSentence = document.getElementById('sentenceMode').checked;
+        if (enableSentence) {
+          sentence.push(item.text);
+          updateSentenceBox();
+        } else {
+          playAudioOrTTS(item.audio, item.text);
+        }
+      });
+      buttonGroup.appendChild(btn);
+    });
+
+    sec.appendChild(buttonGroup);
+    container.appendChild(sec);
+  });
+
+  enableSectionZoom();
+  enableCheckboxControl();
+}
+
+// ✨ 打勾控制展開 / 收回
+function enableCheckboxControl() {
+  const checks = document.querySelectorAll('.section-check');
   const sections = document.querySelectorAll('.section');
 
-  sections.forEach(sec => {
-    sec.addEventListener('click', function () {
-      // 如果已經展開 → 收回
-      if (sec.classList.contains('expanded')) {
+  checks.forEach((chk, i) => {
+    chk.addEventListener('change', () => {
+      const sec = sections[i];
+
+      if (!chk.checked) {
+        // ❗ 取消勾選 → 強制縮起
         sec.classList.remove('expanded');
         sec.classList.add('collapsed');
         return;
       }
 
-      // 收合其他 section
+      // ✔ 打勾 → 允許展開，但不會自動展開
+      // 使用者必須「點一下 section」才會展開
+    });
+  });
+}
+
+// ✨ 點擊展開（採用 checkbox 狀態）
+function enableSectionZoom() {
+  const sections = document.querySelectorAll('.section');
+  const checks = document.querySelectorAll('.section-check');
+
+  sections.forEach((sec, idx) => {
+    sec.addEventListener('click', function (e) {
+      if (e.target.closest('.speak-button')) return;
+
+      // ❗ 未打勾 → 不允許展開
+      if (!checks[idx].checked) return;
+
+      const isExpanded = sec.classList.contains('expanded');
+
+      // 收起所有 section
       sections.forEach(s => {
         s.classList.remove('expanded');
         s.classList.add('collapsed');
       });
 
-      // 展開目前這個
-      sec.classList.remove('collapsed');
-      sec.classList.add('expanded');
-    });
-  });
-}
-
-// 放大縮小區塊
-function oldenableSectionZoom() {
-  const sections = document.querySelectorAll('.section');
-
-  sections.forEach(sec => {
-    sec.addEventListener('click', function (e) {
-
-      // 避免點到按鈕時啟動縮放
-      if (e.target.closest(".speak-button")) return;
-
-      // 若已經是展開狀態 → 點擊時縮回
-      if (sec.classList.contains('expanded')) {
-        sec.classList.remove('expanded');
-        return;
+      // 如果剛剛是收起 → 現在展開它
+      if (!isExpanded) {
+        sec.classList.remove('collapsed');
+        sec.classList.add('expanded');
       }
-
-      // 收起所有 section
-      sections.forEach(s => s.classList.remove('expanded'));
-
-      // 展開目前這個
-      sec.classList.add('expanded');
     });
   });
 }
 
-// 載入 JSON 並建立畫面
-async function loadSections() {
-  try {
-    const response = await fetch('data.json');
-    const jsonData = await response.json();
-    const groups = jsonData.groups;
-    const container = document.getElementById('buttonContainer');
-    container.innerHTML = '';
+// 播放句子
+document.getElementById('playButton').addEventListener('click', () => {
+  if (sentence.length > 0) speak(sentence.join(''));
+});
 
-    groups.forEach((group, idx) => {
-      // 建立群組容器
-      const sectionDiv = document.createElement('div');
-      sectionDiv.className = 'section';
-      sectionDiv.dataset.group = group.group;
+// 清除句子
+document.getElementById('clearButton').addEventListener('click', () => {
+  sentence = [];
+  updateSentenceBox();
+});
 
-      // 群組標題 + checkbox
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'section-title';
-      titleDiv.innerHTML = `
-        <label>
-          <input type="checkbox" class="group-toggle" data-index="${idx}" ${group.isshow === 'Y' ? 'checked' : ''}>
-          ${group.group}
-        </label>
-      `;
-      sectionDiv.appendChild(titleDiv);
-
-      // 群組按鈕
-      const buttonGroup = document.createElement('div');
-      buttonGroup.className = 'button-group';
-      if (group.isshow !== 'Y') buttonGroup.style.display = 'none';
-
-      group.data.forEach(item => {
-        const button = document.createElement('div');
-        button.className = 'speak-button';
-        button.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div class="label">${item.name}</div>
-        `;
-        button.addEventListener('click', () => {
-          const sentenceMode = document.getElementById('sentenceMode').checked;
-          if (sentenceMode) {
-            sentence.push(item.text);
-            updateSentenceBox();
-          } else {
-            playAudioOrTTS(item.audio, item.text);
-          }
-        });
-        buttonGroup.appendChild(button);
-      });
-
-      sectionDiv.appendChild(buttonGroup);
-      container.appendChild(sectionDiv);
-    });
-
-    // 綁定群組 checkbox 開關
-    document.querySelectorAll('.group-toggle').forEach(cb => {
-      cb.addEventListener('change', (e) => {
-        const index = e.target.dataset.index;
-        const groupEl = document.querySelectorAll('.button-group')[index];
-        groupEl.style.display = e.target.checked ? 'flex' : 'none';
-      });
-    });
-
-    // 播放整句
-    document.getElementById('playButton').addEventListener('click', () => {
-      if (sentence.length > 0) speak(sentence.join(''));
-    });
-
-    // 清除句子
-    document.getElementById('clearButton').addEventListener('click', () => {
-      sentence = [];
-      updateSentenceBox();
-    });
-
-    // ⭐ 載入後啟用縮放功能
-    enableSectionZoom();
-
-  } catch (error) {
-    console.error('❌ 載入 JSON 失敗：', error);
-  }
-}
-
-// iOS 初始化語音授權
-window.addEventListener('click', () => {
-  if (speechSynthesis.getVoices().length === 0) {
-    speechSynthesis.speak(new SpeechSynthesisUtterance(''));
-  }
-}, { once: true });
-
-// 初始化
 window.addEventListener('DOMContentLoaded', loadSections);
