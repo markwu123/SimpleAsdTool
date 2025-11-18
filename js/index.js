@@ -27,6 +27,21 @@ function playAudioOrTTS(audioPath, text) {
   }
 }
 
+// 放大縮小區塊
+function enableSectionZoom() {
+  const sections = document.querySelectorAll('.section');
+
+  sections.forEach(sec => {
+    sec.addEventListener('click', function (e) {
+
+      // 避免按到按鈕時觸發 Zoom（speak-button 才是正確 class）
+      if (e.target.closest(".speak-button")) return;
+
+      sec.classList.toggle('expanded');
+    });
+  });
+}
+
 // 載入 JSON 並建立畫面
 async function loadSections() {
   try {
@@ -100,6 +115,9 @@ async function loadSections() {
       sentence = [];
       updateSentenceBox();
     });
+
+    // ⭐ 載入後啟用縮放功能
+    enableSectionZoom();
 
   } catch (error) {
     console.error('❌ 載入 JSON 失敗：', error);
