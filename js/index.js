@@ -92,34 +92,35 @@ function handleSpeak(item) {
 }
 
   // 語音播放
-function speak(text, lang) {
+function speak(text, langCode) {
   const u = new SpeechSynthesisUtterance(text);
 
+  // 語系對照表
+  const LANG_MAP = {
+    "zh": "zh-TW",
+    "nan": "nan-TW",
+    "hak": "hak-TW",
+    "pwn": "pwn-TW",
+    "en":'en'
+  };
+
   // 預設中文
-  let targetLang = "zh-TW";
+  let targetLang = LANG_MAP[langCode] || "zh-TW";
 
-  // 若 data.json 有 lang 欄位
-  if (lang !== undefined) {
-    if (lang === "nan") {
-      targetLang = "nan-TW"; // 嘗試台語
-    } else {
-      targetLang = "zh-TW";
-    }
-  }
-
-  // 檢查裝置是否支援該語言
+  // 檢查裝置支援語音
   const voices = speechSynthesis.getVoices();
   const hasVoice = voices.some(v => v.lang === targetLang);
 
-  // 不支援台語 → fallback 中文
-  if (!hasVoice && targetLang === "nan-TW") {
-    console.warn("⚠️ 台語語音不支援，改用中文播放");
+  // 若語音不支援 → fallback 中文
+  if (!hasVoice && targetLang !== "zh-TW") {
+    console.warn(`⚠️ 語音 ${targetLang} 不支援，改用 zh-TW`);
     targetLang = "zh-TW";
   }
 
   u.lang = targetLang;
   speechSynthesis.speak(u);
 }
+
 
 
   // === 展開邏輯 ===
